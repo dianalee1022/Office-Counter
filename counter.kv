@@ -1,0 +1,64 @@
+#:kivy 1.0
+
+<Boxes>:
+    main_container: root_label #call label
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'top'
+        ScreenManager:
+            size_hint: 1, .9
+            id: _screen_manager
+            Screen:
+                name: 'screen1'
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: 50
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: 1, .1
+                        Label:
+                            id: root_label
+                            text: "SWSC Daily Tally Counter"
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: 1, .1
+                        Label:
+                            id: call_count
+                            text: "number of calls"
+                            color: 0, 0, 0, 1
+                            canvas.before:
+                                Color:
+                                    rgba: self.bcolor
+                        Label:
+                            id: inperson_count
+                            text: "number of inperson counts"
+
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        Button:
+                            id: call
+                            text: "Call"
+                            background_color: 0, 1, 0, 1
+                            on_press: root.call_pressed()
+                            on_release: root.call_released()
+                        Button:
+                            id: inperson
+                            text: "In-Person"
+                            on_press: root.inperson_pressed()
+                            on_release: root.inperson_released()
+            Screen:
+                name: 'screen2'
+                Label:
+                    text: 'Another Screen'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            Button:
+                text: 'Go to Screen 1'
+                on_press: _screen_manager.current = 'screen1'
+            Button:
+                text: 'Go to Screen 2'
+                on_press: _screen_manager.current = 'screen2'
