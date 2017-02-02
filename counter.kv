@@ -19,16 +19,14 @@
                         Label:
                             id: root_label
                             text: "SWSC Daily Tally Counter"
+
                     BoxLayout:
                         orientation: 'horizontal'
                         size_hint: 1, .1
                         Label:
                             id: call_count
                             text: "number of calls"
-                            color: 0, 0, 0, 1
-                            canvas.before:
-                                Color:
-                                    rgba: self.bcolor
+							
                         Label:
                             id: inperson_count
                             text: "number of inperson counts"
@@ -38,7 +36,6 @@
                         Button:
                             id: call
                             text: "Call"
-                            background_color: 0, 1, 0, 1
                             on_press: root.call_pressed()
                             on_release: root.call_released()
                         Button:
